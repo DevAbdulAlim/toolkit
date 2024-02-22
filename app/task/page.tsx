@@ -2,29 +2,54 @@
 import React, { useState } from "react";
 import { BiTask } from "react-icons/bi";
 import { FaCheckCircle } from "react-icons/fa";
+import Timer from "./Timer";
 
 interface todo {
   id: number;
   text: string;
   complete: boolean;
+  duration: number;
 }
+
+// sort based on completion
+const sortTodo = (todos: todo[]) => {
+  return todos.sort((a, b) => {
+    if (a.complete && !b.complete) {
+      return 1;
+    } else if (!a.complete && b.complete) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+};
 
 export default function Home() {
   const [todos, setTodos] = useState<todo[]>([]);
   const [todoInput, setTodoInput] = useState<string>("");
   const [idCounter, setIdCounter] = useState<number>(1);
+  const [activeTodo, setActiveTodo] = useState<number>(0);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (todoInput.trim() === "") return;
 
+    const pattern = /(.*)\b(\d+)m\b$/;
+    const extractedTask = pattern.exec(todoInput);
+    if (!extractedTask) {
+      return;
+    }
+
+    console.log(extractedTask);
+
     const newTodo: todo = {
       id: idCounter,
-      text: todoInput,
+      text: extractedTask[1],
       complete: false,
+      duration: parseInt(extractedTask[2]),
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos(sortTodo([...todos, newTodo]));
     setTodoInput("");
     setIdCounter(idCounter + 1);
   };
@@ -46,7 +71,11 @@ export default function Home() {
       return todo;
     });
 
-    setTodos(updatedTodos);
+    setTodos(sortTodo(updatedTodos));
+  };
+
+  const handleActive = (id: number) => {
+    setActiveTodo(id);
   };
 
   console.log(todos);
@@ -89,10 +118,10 @@ export default function Home() {
                 className={`${
                   todo.complete ? "bg-green-50" : "bg-white"
                 } flex grow rounded-md  items-center`}
-                onClick={() => handleComplete(todo.id)}
               >
                 {/* Checkmark icon */}
                 <span
+                  onClick={() => handleComplete(todo.id)}
                   className={`${
                     todo.complete ? "text-green-500" : "text-gray-300"
                   } text-2xl  p-2`}
@@ -101,12 +130,17 @@ export default function Home() {
                 </span>
                 {/* Todo text */}
                 <span
-                  className={`text-lg p-2 ${
+                  className={`text-lg p-2  ${
                     todo.complete ? "line-through text-gray-500" : ""
                   }`}
+                  onClick={() => handleActive(todo.id)}
                 >
                   {todo.text}
                 </span>
+                <Timer
+                  duration={todo.duration}
+                  isActive={activeTodo === todo.id}
+                />
               </div>
               <div className="absolute top-0 right-0 h-full">
                 <button
