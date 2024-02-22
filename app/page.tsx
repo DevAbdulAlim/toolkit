@@ -35,10 +35,10 @@ const Home: React.FC = () => {
           <Link
             href={option.url}
             key={index}
-            title={option.name}
-            className="text-5xl hover:bg-green-500 rounded-full hover:text-green-50 text-green-600 p-4 cursor-pointer"
+            className="text-5xl hover:bg-green-500 rounded-md flex items-center justify-center flex-col space-y-4 hover:text-green-50 text-green-600 p-4 cursor-pointer"
           >
             {option.icon}
+            <span className="text-sm"> {option.name}</span>
           </Link>
         ))}
       </div>

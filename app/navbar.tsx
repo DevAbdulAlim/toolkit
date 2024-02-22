@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaTools } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 
 export default function Navbar() {
@@ -12,6 +12,12 @@ export default function Navbar() {
       >
         <FaHome />
       </Link>
+      <span className="text-green-700 flex items-center space-x-2 font-bold">
+        <span className="text-2xl ">
+          <FaTools />
+        </span>
+        <span className="text-2xl"> toolkit</span>
+      </span>
       <Link
         href="/"
         className="text-2xl text-green-500 hover:bg-green-500 hover:text-white inline-block p-2 rounded-full"
