@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     { name: "Calculator", icon: <FaCalculator />, url: "/calculator" },
     { name: "Task", icon: <FaTasks />, url: "/task" },
     { name: "Temperature", icon: <FiThermometer />, url: "/temperature" },
-    { name: "Age", icon: <FiCalendar />, url: "/" },
+    { name: "Age", icon: <FiCalendar />, url: "/age" },
     { name: "Length/Distance", icon: <FaRuler />, url: "/" },
     { name: "Weight/Mass", icon: <FiDollarSign />, url: "/" },
     { name: "Time", icon: <FiClock />, url: "/" },
