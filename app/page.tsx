@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   const options = [
     { name: "Calculator", icon: <FaCalculator />, url: "/calculator" },
     { name: "Task", icon: <FaTasks />, url: "/task" },
-    { name: "Temperature", icon: <FiThermometer />, url: "/" },
+    { name: "Temperature", icon: <FiThermometer />, url: "/temperature" },
     { name: "Age", icon: <FiCalendar />, url: "/" },
     { name: "Length/Distance", icon: <FaRuler />, url: "/" },
     { name: "Weight/Mass", icon: <FiDollarSign />, url: "/" },

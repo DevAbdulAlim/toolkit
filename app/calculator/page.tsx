@@ -52,9 +52,9 @@ export default function Home() {
       onKeyDown={handleKeyDown}
     >
       <div className="shadow-2xl max-w-md bg-white rounded-md p-4">
-        <div className="border text-xl mb-2 font-semibold">
+        <div className="border text-xl mb-2 text-white rounded-md overflow-hidden font-semibold">
           <input
-            className="p-2 w-full focus:outline-none"
+            className="p-2 bg-blue-950  w-full focus:outline-none"
             type="text"
             name="input"
             value={input}
@@ -62,7 +62,7 @@ export default function Home() {
             placeholder="0"
           />
           <input
-            className="p-2 w-full focus:outline-none"
+            className="p-2 bg-blue-950 w-full focus:outline-none"
             type="text"
             name="result"
             value={result}
@@ -70,34 +70,42 @@ export default function Home() {
             readOnly
           />
         </div>
-        <div className="grid bg-green-50 grid-cols-4">
-          <button type="button" className=" py-4 px-6" onClick={handleAllClear}>
+        <div className="grid gap-4 grid-cols-4">
+          <button
+            type="button"
+            className="shadow-md bg-gray-100 py-4 px-6"
+            onClick={handleAllClear}
+          >
             AC
           </button>
-          <button type="button" className=" py-4 px-6" onClick={handleClear}>
+          <button
+            type="button"
+            className="shadow-md bg-gray-100 py-4 px-6"
+            onClick={handleClear}
+          >
             C
           </button>
           <button
             type="button"
-            className=" py-4 px-6"
+            className="shadow-md bg-gray-100 py-4 px-6"
             onClick={() => handleClick("%")}
           >
             %
           </button>
           <button
             type="button"
-            className=" py-4 px-6"
+            className="shadow-md bg-gray-100 py-4 px-6"
             onClick={() => handleClick("/")}
           >
             /
           </button>
         </div>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-4 gap-4 mt-4">
           <div className="col-span-3">
             <div className="grid grid-cols-3 ">
               <button
                 type="button"
-                className=" py-4 px-6"
+                className="py-4 shadow-md bg-gray-200 px-6"
                 onClick={() => handleClick("7")}
               >
                 7
