@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 
 export default function Timer({
@@ -8,24 +8,24 @@ export default function Timer({
   duration: number;
   isActive: boolean;
 }) {
-  const [seconds, setSeconds] = useState<number>(0);
-  const durationInMinutes = 5;
-  const durationInMillis = durationInMinutes * 60 * 1000;
-  let timer: number;
+  const [remainingSeconds, setRemainingSeconds] = useState<number>(duration * 60);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSeconds(seconds + 1);
-    }, 1000);
+    let timer: NodeJS.Timeout;
 
-    return () => clearTimeout(timer);
-  }, [seconds, durationInMillis]);
-
-  useEffect(() => {
-    if (seconds * 1000 >= durationInMillis) {
-      clearTimeout(timer);
+    if (isActive && remainingSeconds > 0) {
+      timer = setInterval(() => {
+        setRemainingSeconds((prevSeconds) => prevSeconds - 1);
+      }, 1000);
     }
-  }, [seconds, durationInMillis]);
 
-  return <div>{seconds}</div>;
+    return () => clearInterval(timer);
+  }, [isActive, remainingSeconds, duration]);
+
+  // Format remaining seconds as m:ss
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+  const formattedTime = `${String(minutes)}m ${String(seconds).padStart(2, '0')}s`;
+
+  return <time className={isActive && seconds > 0 ? 'text-green-500' : (isActive && seconds === 0) ? 'text-red-500' : 'text-gray-500'}>{formattedTime}</time>;
 }
