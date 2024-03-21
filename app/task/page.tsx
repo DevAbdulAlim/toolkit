@@ -4,7 +4,6 @@ import { BiTask } from "react-icons/bi";
 import { FaCheckCircle } from "react-icons/fa";
 import Timer from "./timer";
 
-
 interface todo {
   id: number;
   text: string;
@@ -38,6 +37,10 @@ export default function Home() {
     const pattern = /(.*)\b(\d+)m\b$/;
     const extractedTask = pattern.exec(todoInput);
     if (!extractedTask) {
+      alert(
+        "Please add duration at the end such as 'practice english speaking 30m'"
+      );
+
       return;
     }
 
@@ -74,18 +77,17 @@ export default function Home() {
 
     setTodos(sortTodo(updatedTodos));
     if (id === activeTodo) {
-      setActiveTodo(0)
+      setActiveTodo(0);
     }
   };
 
   const handleActive = (id: number) => {
     // need check if completed already
     if (id === activeTodo) {
-      setActiveTodo(0)
+      setActiveTodo(0);
     } else {
       setActiveTodo(id);
     }
-   
   };
 
   console.log(todos);
@@ -107,7 +109,7 @@ export default function Home() {
             value={todoInput}
             maxLength={40}
             onChange={handleChange}
-            placeholder="Add a new task..."
+            placeholder="example task... 5m"
           />
           <button
             type="submit"
