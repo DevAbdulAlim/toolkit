@@ -74,28 +74,28 @@ export default function Home() {
         <div className="grid gap-4 text-gray-100 grid-cols-4">
           <button
             type="button"
-            className="shadow flex justify-center bg-gray-800 rounded-xl py-4 px-6"
+            className="shadow flex justify-center bg-red-800  rounded-xl py-4 px-6"
             onClick={handleAllClear}
           >
             AC
           </button>
           <button
             type="button"
-            className="shadow bg-gray-800 rounded-xl py-4 px-6"
+            className="shadow bg-amber-800 rounded-xl py-4 px-6"
             onClick={handleClear}
           >
             C
           </button>
           <button
             type="button"
-            className="shadow bg-gray-800 rounded-xl py-4 px-6"
+            className="shadow bg-gray-500 rounded-xl py-4 px-6"
             onClick={() => handleClick("%")}
           >
             %
           </button>
           <button
             type="button"
-            className="shadow bg-gray-800 rounded-xl py-4 px-6"
+            className="shadow bg-gray-500 rounded-xl py-4 px-6"
             onClick={() => handleClick("/")}
           >
             /
@@ -187,28 +187,28 @@ export default function Home() {
           <div className="grid  gri-cols-1 gap-4">
             <button
               type="button"
-              className=" py-4 shadow  bg-gray-800 rounded-xl px-6"
+              className=" py-4 shadow  bg-gray-500 rounded-xl px-6"
               onClick={() => handleClick("*")}
             >
               x
             </button>
             <button
               type="button"
-              className=" py-4 shadow  bg-gray-800 rounded-xl px-6"
+              className=" py-4 shadow  bg-gray-500 rounded-xl px-6"
               onClick={() => handleClick("-")}
             >
               -
             </button>
             <button
               type="button"
-              className=" py-4 shadow  bg-gray-800 rounded-xl px-6"
+              className=" py-4 shadow  bg-gray-500 rounded-xl px-6"
               onClick={() => handleClick("+")}
             >
               +
             </button>
             <button
               type="button"
-              className=" py-4 shadow  bg-gray-800 rounded-xl px-6"
+              className=" py-4 shadow  bg-gray-400 rounded-xl px-6"
               onClick={() => handleClick("=")}
             >
               =
